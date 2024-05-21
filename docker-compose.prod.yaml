@@ -14,7 +14,7 @@ services:
     build:
       context: ./client-gateway
       dockerfile: Dockerfile.prod
-    image: client-gateway-prod
+    image: us-west1-docker.pkg.dev/strong-art-422516-f9/image-registry/client-gateway-prod
     ports:
       - "${CLIENT_GATEWAY_PORT}:3000"
     environment:
@@ -25,7 +25,7 @@ services:
     build:
       context: ./products-ms
       dockerfile: Dockerfile.prod
-    image: products-ms-prod
+    image: us-west1-docker.pkg.dev/strong-art-422516-f9/image-registry/products-ms-prod
     environment:
       - PORT=3000
       - DATABASE_URL=file:./dev.db
@@ -37,7 +37,7 @@ services:
       dockerfile: Dockerfile.prod
       args:
         - ORDERS_DATABASE_URL=${ORDERS_DATABASE_URL}
-    image: orders-ms-prod
+    image: us-west1-docker.pkg.dev/strong-art-422516-f9/image-registry/orders-ms-prod
     environment:
       - PORT=3000
       - DATABASE_URL=${ORDERS_DATABASE_URL}
@@ -47,7 +47,7 @@ services:
     build: 
       context: ./payments-ms
       dockerfile: Dockerfile.prod
-    image: payments-ms-prod
+    image: us-west1-docker.pkg.dev/strong-art-422516-f9/image-registry/payments-ms-prod
     ports:
       - ${PAYMENTS_MS_PORT}:${PAYMENTS_MS_PORT}
     environment:
@@ -62,7 +62,7 @@ services:
     build:
       context: ./auth-ms
       dockerfile: Dockerfile.prod
-    image: auth-ms-prod
+    image: us-west1-docker.pkg.dev/strong-art-422516-f9/image-registry/auth-ms-prod
     environment:
       - PORT=${AUTH_MS_PORT}
       - NATS_SERVERS=nats://nats-server:4222
